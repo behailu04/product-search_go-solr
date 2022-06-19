@@ -1,0 +1,8 @@
+{
+    "port": "8785",
+    "solr": {
+      "addr": "http://solr:8983/solr",
+      "core": "productCollection"
+    }
+  }
+  
