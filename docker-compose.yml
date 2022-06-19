@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  product_search_app: 
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports: 
+      - "8785:8785"
+    networks:
+      - search-app
+    depends_on:
+      - solr
+
+  solr:
+    image: solr:8
+    ports:
+      - "8983:8983"
+    command:
+      - solr-precreate
+      - productCollection
+    networks:
+      - search-app
+
+volumes:
+  data:
+
+
+networks:
+  search-app:
+    driver: bridge
